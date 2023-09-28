@@ -4,6 +4,18 @@ document.getElementById('language-button').addEventListener('click', function ()
     this.innerHTML = currentLanguage === 'RU' ? 'ENG' : 'RU';
 });
 
+const languageButton = document.getElementById('language-button-mob');
+const languageText = document.getElementById('language-text');
+const languages = ['RU', 'ENG'];
+let currentLanguageIndex = 0;
+
+languageButton.addEventListener('click', function () {
+  currentLanguageIndex = (currentLanguageIndex + 1) % languages.length;
+  languageText.textContent = languages[currentLanguageIndex];
+  languageText.style.display = 'inline'; // Отображаем текст
+});
+
+
 
 document.getElementById('login-button').addEventListener('click', function () {
     alert('Log In clicked');
