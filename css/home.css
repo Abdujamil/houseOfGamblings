@@ -292,10 +292,11 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 1048px; */
+  height: 200%;
   overflow: hidden;
   position: relative;
   width: 100%;
+  gap: 16px;
 }
 
 .icons-l1,
@@ -306,39 +307,40 @@ nav a {
   align-items: center;
   overflow: hidden;
   height: 100%;
+  gap: 28px;
   animation-duration: 10s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-.icon {
+/* .icon {
   margin: 10px 0;
-}
+} */
 
 @keyframes moveIconsUp {
   0% {
-    transform: translateY(100%);
+    transform: translateY(10%);
   }
   100% {
-    transform: translateY(-100%);
+    transform: translateY(-10%);
   }
 }
 
 @keyframes moveIconsDown {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(-10%);
   }
   100% {
-    transform: translateY(100%);
+    transform: translateY(10%);
   }
 }
 
 @keyframes moveIconsUp2 {
   0% {
-    transform: translateY(100%);
+    transform: translateY(10%);
   }
   100% {
-    transform: translateY(-100%);
+    transform: translateY(-10%);
   }
 }
 
@@ -476,7 +478,7 @@ nav a {
 }
 
 footer {
-  padding: 40px 140px 24px 140px;
+  padding: 40px 140px 0px 140px;
   border-radius: 64px 64px 0px 0px;
   border-top: 4px solid #478bf9;
   border-right: 4px solid #478bf9;
@@ -581,6 +583,10 @@ a {
     justify-content: flex-start;
   }
 
+  .block{
+    margin-bottom: 32px;
+  }
+
   .block h1 {
     font-size: 65px;
     line-height: 50px;
@@ -602,10 +608,11 @@ a {
 
   .block.icons {
     height: 960px;
+    gap: 8px;
   }
 
   .icon {
-    width: 60px;
+    width: 70px;
     margin: 0;
   }
 
@@ -700,6 +707,10 @@ a {
     height: auto;
     gap: 10px;
   }
+  .icon{
+    height: 70px !important;
+    width: auto;
+  }
 
   .icons {
     gap: 0;
@@ -707,43 +718,33 @@ a {
 
   @keyframes moveIconsUp {
     0% {
-      transform: translateX(100%);
+      transform: translateX(10%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-10%);
     }
   }
 
   @keyframes moveIconsDown {
     0% {
-      transform: translateX(-100%);
+      transform: translateX(-10%);
     }
     100% {
-      transform: translateX(100%);
+      transform: translateX(10%);
     }
   }
 
   @keyframes moveIconsUp2 {
     0% {
-      transform: translateX(100%);
+      transform: translateX(10%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-10%);
     }
   }
 
-  /* @keyframes move {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  } */
-
   .icons-l1 {
     animation-name: moveIconsUp;
-    /* animation: move 10s linear infinite alternate; */
   }
 
   .icons-l2 {
@@ -840,7 +841,7 @@ a {
 
   .icon {
     margin: 0;
-    width: 49px;
+    height: 49px;
   }
 
   .blog {

@@ -35,52 +35,6 @@ closeMenu.addEventListener('click', () => {
 });
 
 
-// Blog script
-function createIcon(container, src, alt) {
-    const icon = document.createElement("img");
-    icon.className = "icon";
-    icon.src = src;
-    icon.alt = alt;
-    container.appendChild(icon);
-}
-
-
-const l1Container = document.querySelector('.icons-l1');
-const l2Container = document.querySelector('.icons-l2');
-const l3Container = document.querySelector('.icons-l3');
-
-
-createIcon(l1Container, "/img/M.svg", "m");
-createIcon(l1Container, "/img/Timer.svg", "timer");
-createIcon(l1Container, "/img/Crown.svg", "crown");
-createIcon(l1Container, "/img/World.svg", "world");
-createIcon(l1Container, "/img/Shield.svg", "shield");
-createIcon(l1Container, "/img/Timer.svg", "timer");
-createIcon(l1Container, "/img/Soccer.svg", "soccer");
-createIcon(l1Container, "/img/Timer.svg", "timer");
-createIcon(l1Container, "/img/Shield.svg", "shield");
-
-createIcon(l2Container, "/img/Shield.svg", "shield");
-createIcon(l2Container, "/img/M.svg", "m");
-createIcon(l2Container, "/img/Timer.svg", "timer");
-createIcon(l2Container, "/img/World.svg", "world");
-createIcon(l2Container, "/img/Crown.svg", "crown");
-createIcon(l2Container, "/img/Soccer.svg", "soccer");
-createIcon(l2Container, "/img/Shield.svg", "shield");
-createIcon(l2Container, "/img/Soccer.svg", "soccer");
-createIcon(l2Container, "/img/Timer.svg", "timer");
-
-createIcon(l3Container, "/img/Crown.svg", "crown");
-createIcon(l3Container, "/img/Soccer.svg", "soccer");
-createIcon(l3Container, "/img/Timer.svg", "timer");
-createIcon(l3Container, "/img/Shield.svg", "shield");
-createIcon(l3Container, "/img/M.svg", "m");
-
-createIcon(l3Container, "/img/Shield.svg", "shield");
-createIcon(l3Container, "/img/World.svg", "world");
-createIcon(l3Container, "/img/Timer.svg", "timer");
-createIcon(l3Container, "/img/Soccer.svg", "soccer");
-
 
 const blogContainer = document.querySelector('.blog-content');
 
@@ -147,3 +101,85 @@ function updateThumbHeight() {
 
 updateThumbHeight();
 
+
+
+// Blog script
+let lastScreenWidth = window.innerWidth;
+const threshold = 50; // Порог для изменения размера
+
+// Функция для обработки изменения размера окна
+function handleResize() {
+  const screenWidth = window.innerWidth;
+
+  // Проверяем, превышает ли изменение размера порог
+  if (Math.abs(screenWidth - lastScreenWidth) > threshold) {
+    createIconsByScreenSize();
+    lastScreenWidth = screenWidth; // Обновляем последний известный размер
+  }
+}
+
+// Функция для создания иконки и добавления её в указанный контейнер
+function createIcon(container, src, alt) {
+  const icon = document.createElement("img");
+  icon.className = "icon";
+  icon.src = src;
+  icon.alt = alt;
+  container.appendChild(icon);
+}
+
+// Функция для очистки контейнера
+function clearContainer(container) {
+  container.innerHTML = "";
+}
+
+function createIconsByScreenSize() {
+  const l1Container = document.querySelector('.icons-l1');
+  const l2Container = document.querySelector('.icons-l2');
+  const l3Container = document.querySelector('.icons-l3');
+  const screenWidth = window.innerWidth;
+
+  // Определяем пути к изображениям для мобильной и десктопной версий
+  let worldImagePath = "/img/World.svg";
+  if (screenWidth < 920) {
+    worldImagePath = "/img/world-mob2.svg";
+  }
+
+  // Очищаем контейнеры перед добавлением новых иконок
+  clearContainer(l1Container);
+  clearContainer(l2Container);
+  clearContainer(l3Container);
+
+  // Создаем иконки с учетом пути к изображению
+  createIcon(l1Container, "/img/M.svg", "m");
+  createIcon(l1Container, "/img/Timer.svg", "timer");
+  createIcon(l1Container, "/img/Crown.svg", "crown");
+  createIcon(l1Container, worldImagePath, "world");
+  createIcon(l1Container, "/img/Shield.svg", "shield");
+  createIcon(l1Container, "/img/Timer.svg", "timer");
+  createIcon(l1Container, "/img/Soccer.svg", "soccer");
+  createIcon(l1Container, "/img/Timer.svg", "timer");
+  createIcon(l1Container, "/img/Shield.svg", "shield");
+
+  createIcon(l2Container, "/img/Shield.svg", "shield");
+  createIcon(l2Container, "/img/M.svg", "m");
+  createIcon(l2Container, "/img/Timer.svg", "timer");
+  createIcon(l2Container, worldImagePath, "world");
+  createIcon(l2Container, "/img/Crown.svg", "crown");
+  createIcon(l2Container, "/img/Soccer.svg", "soccer");
+  createIcon(l2Container, "/img/Shield.svg", "shield");
+  createIcon(l2Container, "/img/Soccer.svg", "soccer");
+  createIcon(l2Container, "/img/Timer.svg", "timer");
+
+  createIcon(l3Container, "/img/Crown.svg", "crown");
+  createIcon(l3Container, "/img/Soccer.svg", "soccer");
+  createIcon(l3Container, "/img/Timer.svg", "timer");
+  createIcon(l3Container, "/img/Shield.svg", "shield");
+  createIcon(l3Container, "/img/M.svg", "m");
+  createIcon(l3Container, "/img/Shield.svg", "shield");
+  createIcon(l3Container, worldImagePath, "world");
+  createIcon(l3Container, "/img/Timer.svg", "timer");
+  createIcon(l3Container, "/img/Soccer.svg", "soccer");
+}
+
+window.addEventListener('load', createIconsByScreenSize);
+window.addEventListener('resize', handleResize); // Обновляем изображение при изменении размера окна
